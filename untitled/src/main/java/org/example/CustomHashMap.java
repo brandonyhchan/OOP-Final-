@@ -34,64 +34,64 @@ public class CustomHashMap<K, V> {
       this.value = value;
     }
 
-    public Node<K, V> getNext() {
+    public Node<K, V> getNextNode() {
       return next;
     }
 
-    public void setNext(Node<K, V> next) {
+    public void setNextNode(Node<K, V> next) {
       this.next = next;
     }
   }
 
-  private int size = 100;
-  private Node<K, V>[] map;
+  private int size = 100; //because we are using an array, we need to initalize the size
+  private Node<K, V>[] array;
 
   public CustomHashMap() {
-    map = new Node[size];
+    array = new Node[size];
   }
 
   public void put(K key, V value) {
     int i = index(key);
     Node newNode = new Node(key, value, null);
-    if(map[i] == null) {
-      map[i] = newNode;
+    if(array[i] == null) {
+      array[i] = newNode; //assign new node to array if array is null
     } else {
-      Node<K, V> previousNode = null;
-      Node<K, V> currentNode = map[i];
+      Node<K, V> previousNode = null; //set first node's previous node to null
+      Node<K, V> currentNode = array[i];
       while(currentNode != null){
         if(currentNode.getKey().equals(key)){
-          currentNode.setValue(value);
+          currentNode.setValue(value); //set value for the key
           break;
         }
         previousNode = currentNode;
-        currentNode = currentNode.getNext();
+        currentNode = currentNode.getNextNode(); //iterate to next node
       }
       if(previousNode != null)
-        previousNode.setNext(newNode);
+        previousNode.setNextNode(newNode);
     }
   }
 
   public V get(K key){
     V value = null;
     int index = index(key);
-    Node<K, V> entry = map[index];
+    Node<K, V> entry = array[index];
     while (entry != null){
       if(entry.getKey().equals(key)) {
         value = entry.getValue();
         break;
       }
-      entry = entry.getNext();
+      entry = entry.getNextNode();
     }
     return value;
   }
 
   public void print(){
     for(int i = 0; i < size; i++){
-      if(map[i] != null){
-        Node<K, V> currentNode = map[i];
+      if(array[i] != null){
+        Node<K, V> currentNode = array[i];
         while (currentNode != null){
           System.out.println(String.format("Key is %s and value is %s", currentNode.getKey(), currentNode.getValue()));
-          currentNode = currentNode.getNext();
+          currentNode = currentNode.getNextNode(); //iterate to next node
         }
       }
     }
@@ -105,9 +105,14 @@ public class CustomHashMap<K, V> {
   }
 
   public static void main(String[] args) {
-    CustomHashMap<Integer, String> map = new CustomHashMap<>();
-    map.put(1, "Hello");
-    map.put(2, "World");
-    map.print();
+    CustomHashMap<String, String> map1 = new CustomHashMap<>();
+    map1.put("Hello", "World");
+    map1.put("First", "Name");
+    map1.print();
+
+    CustomHashMap<Integer, String> map2 = new CustomHashMap<>();
+    map2.put(1, "World");
+    map2.put(2, "World");
+    map2.print();
   }
 }
