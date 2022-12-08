@@ -12,9 +12,8 @@ import java.util.List;
   so separating the subject and the execution(more SOLID)
  Analogy on this example: I want to buy and sell stocks,
   these two requests are different kinds of "command/order",
-  I wrap these orders and the logic to process it
-  in a shared method called "execute()",
-  then passed down to the broker so it can process it collectively
+  I wrap these orders and the logic to process it in a shared method called "execute()",
+  then pass them down to the broker so they can be processed collectively
   when running execute().
  */
 
