@@ -123,8 +123,6 @@ public class MapReduce {
       List<Integer> newList = new ArrayList<Integer>();
       List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
       list.stream().map(n -> newList.add(n * 5));
-
-
     }
 
   }
