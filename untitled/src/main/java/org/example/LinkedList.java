@@ -1,42 +1,37 @@
 package org.example;
-import java.io.*;
 
-// Java program to implement
-// a Singly Linked List
-public class LinkedList {
+public class LinkedList<T> {
 
-  Node head; // head of list
+  Node<T> head; // head of list
 
   // Linked list Node.
   // This inner class is made static
   // so that main() can access it
-  static class Node {
+  static class Node<T> {
 
-    int data;
-    Node next;
+     Object data;
+    Node<T> next;
 
     // Constructor
-    Node(int d)
-    {
-      data = d;
+    Node(T data) {
+      this.data = data;
       next = null;
     }
   }
 
   // Method to insert a new node
-  public static LinkedList insert(LinkedList list, int data)
-  {
+  public void insert(T data) {
     // Create a new node with given data
-    Node new_node = new Node(data);
+    Node<T> new_node = new Node<T>(data);
 
     // If the Linked List is empty,
     // then make the new node as head
-    if (list.head == null) {
-      list.head = new_node;
+    if (this.head == null) {
+      this.head = new_node;
     } else {
       // Else traverse till the last node
       // and insert the new_node there
-      Node last = list.head;
+      Node<T> last = this.head;
       while (last.next != null) {
         last = last.next;
       }
@@ -44,15 +39,11 @@ public class LinkedList {
       // Insert the new_node at last node
       last.next = new_node;
     }
-
-    // Return the list by head
-    return list;
   }
 
   // Method to print the LinkedList.
-  public static void printList(LinkedList list)
-  {
-    Node currNode = list.head;
+  public void printList() {
+    Node<T> currNode = this.head;
 
     System.out.print("LinkedList: ");
 
@@ -66,27 +57,30 @@ public class LinkedList {
     }
   }
 
+  public void clearList() {
+    this.head = null;
+  }
+
   // Driver code
-  public static void main(String[] args)
-  {
+  public static void main(String[] args) {
     /* Start with the empty list. */
-    LinkedList list = new LinkedList();
+    LinkedList<Integer> list = new LinkedList<Integer>();
 
     //
     // ******INSERTION******
     //
 
-    // Insert the values
-    list = insert(list, 1);
-    list = insert(list, 2);
-    list = insert(list, 3);
-    list = insert(list, 4);
-    list = insert(list, 5);
-    list = insert(list, 6);
-    list = insert(list, 7);
-    list = insert(list, 8);
+    list.insert(1);
+    list.insert(12);
+    list.insert(23);
 
     // Print the LinkedList
-    printList(list);
+    list.printList();
+    System.out.print("\n");
+
+    LinkedList<String> list2 = new LinkedList<String>();
+    list2.insert("Hello");
+    list2.insert("World");
+    list2.printList();
   }
 }
