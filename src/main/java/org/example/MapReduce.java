@@ -16,6 +16,8 @@ public class MapReduce {
       // example6();
       // example7();
       // example8();
+      // example9(); - .map() ex.
+      // example10(); - .map() ex.
     }
 
     static void example1() {
@@ -108,6 +110,21 @@ public class MapReduce {
         return max;
       });
       System.out.println("Max number is "+ result);
+    }
+
+    static void example9() {
+      //prints the square of each element n
+      List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+      list.stream().map(n -> n * n).forEach(System.out::println);
+    }
+
+    static void example10() {
+      //multiplies each element by 5 and saves it into the newList
+      List<Integer> newList = new ArrayList<Integer>();
+      List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+      list.stream().map(n -> newList.add(n * 5));
+
+
     }
 
   }
