@@ -111,7 +111,7 @@ public class CustomHashMap<K, V> {
     map1.print();
 
     CustomHashMap<Integer, String> map2 = new CustomHashMap<>();
-    map2.put(1, "World");
+    map2.put(1, "Hello");
     map2.put(2, "World");
     map2.print();
   }
