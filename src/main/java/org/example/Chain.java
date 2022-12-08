@@ -1,11 +1,12 @@
-package org.example;/*
+package org.example;
+/*
 Chain of responsibility is handling a request by layers of processors.
 Analogy: Customer calls customer service, gets answered by the reps, then passed to the general tech service,
 then to the actual technician.
- */
+*/
 
 /**
- * The a class to represent the chain of responsibility.
+ * The class to represent the chain of responsibility.
  */
 public class Chain
 {
