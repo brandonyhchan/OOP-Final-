@@ -9,7 +9,7 @@ import java.util.List;
   then pass it to the business logic that processes it
   This pattern exists because you can label what to do with each command,
   but only run it in a backend,
-  so separating the subject and the execution logic (more SOLID)
+  so separating the subject and the execution(more SOLID)
  Analogy on this example: I want to buy and sell stocks,
   these two requests are different kinds of "command/order",
   I wrap these orders and the logic to process it
